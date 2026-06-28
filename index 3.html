@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さくら眼科 - 鹿児島市の眼科医院</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Segoe UI', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+            color: #3a2a20;
+            background-color: #fdfaf8;
+        }
+
+        /* ===== ヘッダー ===== */
+        .contact-header {
+            background-color: #f2a8b0;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 400;
+            font-size: 1.1em;
+            letter-spacing: 0.05em;
+        }
+
+        header {
+            background: linear-gradient(160deg, #f9d5dc 0%, #f5b8c0 50%, #f9e0d0 100%);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            font-size: 0.85em;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 0.08em;
+        }
+
+        /* ===== ナビ ===== */
+        nav {
+            background-color: #ffffff;
+            padding: 14px;
+            border-bottom: 1px solid #f5d0d8;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(200,140,150,0.10);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            margin: 0 14px;
+            text-decoration: none;
+            color: #b87880;
+            font-weight: 500;
+            font-size: 0.95em;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #b87880;
+        }
+
+        /* ===== コンテナ ===== */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+
+        section {
+            background: #ffffff;
+            margin: 18px 0;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(180,130,140,0.08);
+        }
+
+        section h2 {
+            color: #b87880;
+            font-weight: 500;
+            font-size: 1em;
+            letter-spacing: 0.15em;
+            margin-bottom: 18px;
+            border-bottom: 1px solid #f5d0d8;
+            padding-bottom: 10px;
+        }
+
+        section h3 {
+            color: #3a2a20;
+            font-weight: 400;
+            font-size: 1.15em;
+            margin-bottom: 14px;
+        }
+
+        /* ===== ヒーロー ===== */
+        .hero {
+            text-align: center;
+            background: linear-gradient(160deg, #fef0f3 0%, #fde8ec 50%, #fef5ee 100%);
+            color: #3a2a20;
+            padding: 44px 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            color: #b87880;
+            border: none;
+            font-size: 1.6em;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1em;
+            font-weight: 400;
+            line-height: 2;
+            color: #5a4a46;
+        }
+
+        /* ===== ステータス ===== */
+        .status-box {
+            background: #fdf8f8;
+            border-left: 3px solid #e8b8c0;
+            padding: 20px 24px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+
+        .status-label {
+            font-weight: 400;
+            color: #b87880;
+            font-size: 0.9em;
+            letter-spacing: 0.1em;
+        }
+
+        .status-value {
+            font-size: 1.6em;
+            font-weight: 500;
+            margin-top: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .status-open    { color: #5aab6e; }
+        .status-break   { color: #e08840; }
+        .status-am      { color: #4a9ab5; }
+        .status-pm      { color: #8a6abf; }
+        .status-holiday { color: #c05060; }
+        .status-closed  { color: #999; }
+
+        .status-message {
+            margin-top: 10px;
+            font-size: 0.92em;
+            color: #5a4a46;
+            font-weight: 300;
+        }
+
+        /* ===== ログインボタン ===== */
+        .toggle-button {
+            background: #e8b0b8;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+            margin-top: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background: #d09098;
+        }
+
+        /* ===== スタッフパネル ===== */
+        .staff-panel {
+            background-color: #fdf8f8;
+            padding: 24px;
+            border-radius: 16px;
+            max-width: 460px;
+            margin: 18px auto 0;
+            border: 1px solid #f0d8dc;
+            display: none;
+        }
+
+        .staff-panel h3 {
+            text-align: center;
+            color: #b87880;
+            font-weight: 500;
+            font-size: 1em;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .staff-panel input[type="password"] {
+            width: 100%;
+            padding: 10px 14px;
+            margin: 8px 0 12px;
+            border: 1px solid #f0d8dc;
+            border-radius: 999px;
+            font-family: inherit;
+        }
+
+        .staff-panel .login-btn {
+            width: 100%;
+            background-color: #f2a8b0;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 0.95em;
+            letter-spacing: 0.05em;
+            font-family: inherit;
+        }
+
+        .staff-panel .login-btn:hover {
+            background: #d09098;
+        }
+
+        /* ===== 診療状況絵文字ボタン ===== */
+        .status-emoji-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .status-emoji-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            border: 1.5px solid #e0c8cc;
+            border-radius: 999px;
+            padding: 8px 20px;
+            cursor: default;
+            font-family: inherit;
+            font-size: 0.9em;
+            color: #7a5a60;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            transition: all 0.2s;
+            pointer-events: none;
+        }
+
+        .status-emoji-btn.active {
+            background: #f5e0e4;
+            border-color: #d8a0a8;
+            color: #8a3a44;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(180,120,130,0.15);
+        }
+
+        /* ===== ステータスボタン ===== */
+        .status-buttons h4 {
+            color: #b87880;
+            font-weight: 500;
+            font-size: 0.9em;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .status-btn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .status-btn {
+            padding: 12px 8px;
+            border: 1px solid #e8c8cc;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 400;
+            font-family: inherit;
+            background: #fff0f5;
+            color: #b87880;
+            transition: all 0.2s;
+            text-align: center;
+            letter-spacing: 0.03em;
+        }
+
+        .status-btn:hover { border-color: #ff8fa3; background: #ffe0e8; }
+        .status-btn.active { background: #e8b0b8; color: white; border-color: #ff8fa3; }
+
+        /* ===== お知らせ編集 ===== */
+        .news-editor {
+            margin-top: 20px;
+            border-top: 1px solid #ffd0dc;
+            padding-top: 20px;
+        }
+
+        .news-editor h4 {
+            color: #b87880;
+            font-weight: 500;
+            font-size: 0.9em;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .news-input-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .news-input-row input[type="date"],
+        .news-input-row input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #f0d8dc;
+            border-radius: 999px;
+            font-size: 0.9em;
+            font-family: inherit;
+            background: white;
+            color: #3a2a20;
+        }
+
+        .news-input-row input[type="date"] { width: 150px; }
+        .news-input-row input[type="text"] { flex: 1; min-width: 180px; }
+
+        .news-input-row button {
+            padding: 8px 18px;
+            background: #e8b0b8;
+            color: white;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 400;
+            font-family: inherit;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .news-input-row button:hover { background: #d09098; }
+
+        .news-item-edit {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-bottom: 1px solid #ffe0e8;
+            font-size: 0.88em;
+            font-weight: 300;
+        }
+
+        .news-item-edit:last-child { border-bottom: none; }
+
+        .news-delete-btn {
+            background: none;
+            border: 1px solid #ffb0c0;
+            color: #b87880;
+            padding: 3px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.82em;
+            font-family: inherit;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .news-delete-btn:hover { background: #e8b0b8; color: white; border-color: #e0a8b0; }
+
+        .staff-logout {
+            text-align: right;
+            margin-top: 14px;
+        }
+
+        .staff-logout button {
+            background: none;
+            border: none;
+            color: #bbb;
+            cursor: pointer;
+            font-size: 0.82em;
+            font-family: inherit;
+            text-decoration: underline;
+        }
+
+        /* ===== 診療カード ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            border-left: 3px solid #e8c0c8;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 18px rgba(180,130,140,0.14);
+        }
+
+        .service-icon { font-size: 1.8em; margin-bottom: 10px; }
+
+        .service-card h3 {
+            color: #b87880;
+            font-weight: 600;
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 0.88em;
+            font-weight: 300;
+            line-height: 1.7;
+            color: #5a4a46;
+        }
+
+        /* ===== テーブル ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+            font-size: 0.92em;
+        }
+
+        table th, table td {
+            border: 1px solid #f0d8dc;
+            padding: 11px;
+            text-align: center;
+        }
+
+        table th {
+            background: linear-gradient(135deg, #f0c8d0, #f0d0c0);
+            color: white;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        table tr:nth-child(even) { background-color: #fdf8f8; }
+
+        /* ===== アクセス ===== */
+        .access-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .info-box {
+            background: #fdf8f8;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 3px solid #e8c0c8;
+            font-size: 0.92em;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .info-box strong {
+            color: #b87880;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* ===== お知らせリスト ===== */
+        .news-list {
+            list-style: none;
+            margin-top: 14px;
+        }
+
+        .news-list li {
+            padding: 12px 4px;
+            border-bottom: 1px solid #f0e4e6;
+            font-size: 0.9em;
+            font-weight: 300;
+            line-height: 1.7;
+            color: #5a4a46;
+        }
+
+        .news-list li:last-child { border-bottom: none; }
+
+        .news-date {
+            color: #b87880;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
+        /* ===== フッター ===== */
+        footer {
+            background-color: #b89098;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 6px 0;
+            font-size: 0.85em;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== レスポンシブ ===== */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.5em; }
+            nav a { margin: 5px 8px; font-size: 0.88em; }
+            section { padding: 20px 16px; }
+            .status-btn-grid { grid-template-columns: 1fr; }
+            .hero { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contact-header">📞 099-295-5911</div>
+
+    <header>
+        <h1>さくら眼科</h1>
+        <p>SAKURA EYE CLINIC ／ 開設 2000年</p>
+    </header>
+
+    <nav>
+        <a href="#news">お知らせ</a>
+        <a href="#services">診療内容</a>
+        <a href="#hours">診療時間</a>
+        <a href="#access">アクセス</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="hero">
+            <h2>目の健康を、丁寧に守ります。</h2>
+            <p>鹿児島市吉野で、地域の皆さまの眼の健康をサポートし続けて25年。<br>
+            白内障・緑内障・網膜疾患から日常の視力管理まで、幅広く対応しています。</p>
+        </div>
+
+        <!-- 本日の診療 -->
+        <section>
+            <h2>TODAY'S CLINIC</h2>
+            <h3>本日の診療</h3>
+            <div class="status-box">
+                <div class="status-label">診療状況</div>
+                <div class="status-emoji-buttons">
+                    <button class="status-emoji-btn" id="btn-open"    onclick="setStatusDirect('open')"   >受付中</button>
+                    <button class="status-emoji-btn" id="btn-break"   onclick="setStatusDirect('break')"  >休憩中</button>
+                    <button class="status-emoji-btn" id="btn-am"      onclick="setStatusDirect('am')"     >午前のみ診療</button>
+                    <button class="status-emoji-btn" id="btn-pm"      onclick="setStatusDirect('pm')"     >午後のみ診療</button>
+                    <button class="status-emoji-btn" id="btn-closed"  onclick="setStatusDirect('closed')" >受付終了</button>
+                    <button class="status-emoji-btn" id="btn-holiday" onclick="setStatusDirect('holiday')">本日休診</button>
+                </div>
+                <div class="status-message" style="margin-top:16px;">
+                    <strong>メッセージ：</strong><span id="message">通常どおり診療しています</span>
+                </div>
+                <div class="status-message">
+                    <strong>休診日：</strong>日曜・祝祭日・お盆・年末年始
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="toggle-button" onclick="toggleStaffPanel()">🔐 スタッフログイン</button>
+            </div>
+
+            <div class="staff-panel" id="staffPanel">
+                <h3>スタッフ管理画面</h3>
+
+                <div id="loginArea">
+                    <label style="font-size:0.85em;color:#999;letter-spacing:0.05em;">パスワード</label>
+                    <input type="password" id="staffPassword" placeholder="パスワードを入力してください">
+                    <button class="login-btn" onclick="staffLogin()">ログイン</button>
+                </div>
+
+                <div id="adminArea" style="display:none;">
+                    <div id="statusButtons">
+                        <h4>📋 診療ステータスを選択してください</h4>
+                        <div class="status-btn-grid">
+                            <button class="status-btn" data-key="open"    onclick="setStatus(this)">受付中</button>
+                            <button class="status-btn" data-key="break"   onclick="setStatus(this)">休憩中</button>
+                            <button class="status-btn" data-key="am"      onclick="setStatus(this)">午前のみ診療</button>
+                            <button class="status-btn" data-key="pm"      onclick="setStatus(this)">午後のみ診療</button>
+                            <button class="status-btn" data-key="holiday" onclick="setStatus(this)">本日休診</button>
+                            <button class="status-btn" data-key="closed"  onclick="setStatus(this)">受付終了</button>
+                        </div>
+                    </div>
+
+                    <div class="news-editor" id="newsEditor">
+                        <h4>📰 お知らせの編集</h4>
+                        <div class="news-input-row">
+                            <input type="date" id="newDate">
+                            <input type="text" id="newText" placeholder="お知らせの内容を入力">
+                            <button onclick="addNews()">追加</button>
+                        </div>
+                        <div id="newsEditList"></div>
+                    </div>
+
+                    <div class="staff-logout">
+                        <button onclick="staffLogout()">ログアウト</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- お知らせ -->
+        <section id="news">
+            <h2>NEWS & INFORMATION</h2>
+            <h3>お知らせ</h3>
+            <ul class="news-list" id="newsList"></ul>
+        </section>
+
+        <!-- 診療内容 -->
+        <section id="services">
+            <h2>MEDICAL SERVICES</h2>
+            <h3>診療内容</h3>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">👁️</div>
+                    <h3>一般眼科</h3>
+                    <p>視力低下・充血・眼の痛みなど、眼に関するあらゆる症状の診察・治療を行います。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>白内障</h3>
+                    <p>白内障の診断から手術まで対応しています。見えにくさ・かすみなどの症状は早めにご相談ください。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚠️</div>
+                    <h3>緑内障</h3>
+                    <p><strong>失明原因 第1位</strong><br>自覚症状がないまま進行します。一度失った視野は元に戻りません。40歳を過ぎたら定期検査をお勧めします。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🩺</div>
+                    <h3>網膜疾患</h3>
+                    <p>糖尿病網膜症・加齢黄斑変性など、網膜に関わる疾患の診断・治療を行います。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌸</div>
+                    <h3>アレルギー・ドライアイ</h3>
+                    <p>花粉症による結膜炎やドライアイの診察・点眼薬処方を行っています。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>定期検診・健診</h3>
+                    <p>目の病気は自覚症状が出たときにはすでに進行していることが多いです。年に一度の眼科受診をぜひお続けください。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 診療時間 -->
+        <section id="hours">
+            <h2>HOURS & ACCESS</h2>
+            <h3>診療時間</h3>
+            <table>
+                <tr>
+                    <th>曜日</th>
+                    <th>午前（9:30〜12:00）</th>
+                    <th>午後（16:00〜18:00）</th>
+                </tr>
+                <tr><td>月曜日</td><td>●</td><td>●</td></tr>
+                <tr><td>火曜日</td><td>●</td><td>●</td></tr>
+                <tr><td>水曜日</td><td>●</td><td>●</td></tr>
+                <tr><td>木曜日</td><td>●</td><td>●</td></tr>
+                <tr><td>金曜日</td><td>●</td><td>●</td></tr>
+                <tr><td>土曜日</td><td>●</td><td>—</td></tr>
+                <tr><td>日曜日</td><td>—</td><td>—</td></tr>
+            </table>
+            <ul style="margin-top: 18px; margin-left: 18px; font-size:0.9em; font-weight:300; line-height:2;">
+                <li>日曜日・祝祭日・お盆・年末年始は休診となります</li>
+                <li>受付は終了30分前まで</li>
+                <li>臨時休診はお知らせでご確認ください</li>
+            </ul>
+        </section>
+
+        <!-- アクセス -->
+        <section id="access">
+            <h2>ACCESS</h2>
+            <h3>アクセス情報</h3>
+            <div class="access-info">
+                <div class="info-box">
+                    <strong>住所</strong>
+                    〒892-0877<br>鹿児島市吉野二丁目6-10
+                </div>
+                <div class="info-box">
+                    <strong>TEL</strong>
+                    099-295-5911
+                </div>
+                <div class="info-box">
+                    <strong>開設</strong>
+                    2000年
+                </div>
+            </div>
+            <div style="margin-top: 18px;">
+                <a href="https://maps.google.com/?q=892-0877+鹿児島市吉野二丁目6-10" target="_blank"
+                   style="color:#c8808a; text-decoration:none; font-size:0.92em; letter-spacing:0.05em;">
+                    → Google マップで開く
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><strong>医療法人さくら眼科</strong></p>
+        <p>〒892-0877 鹿児島市吉野二丁目6-10　TEL: 099-295-5911</p>
+        <p>© 2000 Sakura Eye Clinic</p>
+    </footer>
+
+    <script>
+        const STATUS_MAP = {
+            open:    { label: '受付中',       cls: 'status-open',    msg: '通常どおり診療しています' },
+            break:   { label: '休憩中',       cls: 'status-break',   msg: '現在休憩中です。しばらくお待ちください' },
+            am:      { label: '午前のみ診療', cls: 'status-am',      msg: '本日は午前診療のみとなります（9:30〜12:00）' },
+            pm:      { label: '午後のみ診療', cls: 'status-pm',      msg: '本日は午後診療のみとなります（16:00〜18:00）' },
+            holiday: { label: '本日休診',     cls: 'status-holiday', msg: '本日は休診となっております' },
+            closed:  { label: '受付終了',     cls: 'status-closed',  msg: '本日の受付は終了いたしました' },
+        };
+
+        const DEFAULT_NEWS = [
+            { date: '2025.06.15', text: '日帰り白内障手術のご予約受付を開始しました。詳しくは受付までお問い合わせください。' },
+            { date: '2025.04.01', text: '春季の診療時間のお知らせ。通常通り診療いたします。' },
+            { date: '2025.03.01', text: 'ホームページをリニューアルいたしました。' },
+            { date: '2025.01.06', text: '年末年始休診のお知らせ（12月31日〜1月5日）。' },
+            { date: '2024.08.10', text: 'お盆休診のお知らせ（8月12日〜16日）。' },
+        ];
+
+        window.addEventListener('load', function () {
+            const savedKey = localStorage.getItem('sakuraStatusKey') || 'open';
+            applyStatus(savedKey);
+            const savedNews = localStorage.getItem('sakuraNews');
+            const news = savedNews ? JSON.parse(savedNews) : DEFAULT_NEWS;
+            renderNews(news);
+            renderNewsEditor(news);
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('newDate').value = today;
+        });
+
+        function applyStatus(key) {
+            const s = STATUS_MAP[key] || STATUS_MAP['open'];
+            document.getElementById('message').textContent = s.msg;
+            // 絵文字ボタンのactive切り替え
+            ['open','break','am','pm','closed','holiday'].forEach(k => {
+                const btn = document.getElementById('btn-' + k);
+                if (btn) btn.classList.toggle('active', k === key);
+            });
+            // スタッフ管理画面のボタン
+            document.querySelectorAll('.status-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.key === key);
+            });
+        }
+
+        function setStatusDirect(key) {
+            // 一般利用者は操作不可（pointer-events:none）なので実質スタッフ用
+            localStorage.setItem('sakuraStatusKey', key);
+            applyStatus(key);
+        }
+
+        function setStatus(btn) {
+            const key = btn.dataset.key;
+            localStorage.setItem('sakuraStatusKey', key);
+            applyStatus(key);
+        }
+
+        function toggleStaffPanel() {
+            const panel = document.getElementById('staffPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function staffLogin() {
+            const pw = document.getElementById('staffPassword').value;
+            if (pw === 'sakura2000') {
+                document.getElementById('loginArea').style.display = 'none';
+                document.getElementById('adminArea').style.display = 'block';
+                const currentKey = localStorage.getItem('sakuraStatusKey') || 'open';
+                applyStatus(currentKey);
+            } else {
+                alert('パスワードが違います');
+                document.getElementById('staffPassword').value = '';
+            }
+        }
+
+        function staffLogout() {
+            document.getElementById('loginArea').style.display = 'block';
+            document.getElementById('adminArea').style.display = 'none';
+            document.getElementById('staffPassword').value = '';
+            document.getElementById('staffPanel').style.display = 'none';
+        }
+
+        function getNews() {
+            const saved = localStorage.getItem('sakuraNews');
+            return saved ? JSON.parse(saved) : DEFAULT_NEWS;
+        }
+
+        function saveNews(news) {
+            localStorage.setItem('sakuraNews', JSON.stringify(news));
+        }
+
+        function renderNews(news) {
+            const ul = document.getElementById('newsList');
+            ul.innerHTML = news.map(n =>
+                `<li><span class="news-date">${n.date}</span>${n.text}</li>`
+            ).join('');
+        }
+
+        function renderNewsEditor(news) {
+            const div = document.getElementById('newsEditList');
+            div.innerHTML = news.map((n, i) =>
+                `<div class="news-item-edit">
+                    <span><strong>${n.date}</strong>　${n.text}</span>
+                    <button class="news-delete-btn" onclick="deleteNews(${i})">削除</button>
+                </div>`
+            ).join('');
+        }
+
+        function addNews() {
+            const dateVal = document.getElementById('newDate').value;
+            const textVal = document.getElementById('newText').value.trim();
+            if (!dateVal || !textVal) { alert('日付と内容を入力してください'); return; }
+            const dateLabel = dateVal.replace(/-/g, '.');
+            const news = getNews();
+            news.unshift({ date: dateLabel, text: textVal });
+            saveNews(news);
+            renderNews(news);
+            renderNewsEditor(news);
+            document.getElementById('newText').value = '';
+        }
+
+        function deleteNews(index) {
+            if (!confirm('このお知らせを削除しますか？')) return;
+            const news = getNews();
+            news.splice(index, 1);
+            saveNews(news);
+            renderNews(news);
+            renderNewsEditor(news);
+        }
+    </script>
+</body>
+</html>
